@@ -10,6 +10,6 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 public class AbstractClassNameCheckTest {
     @Test
     public void test() {
-        JavaCheckVerifier.verify("src/test/files/HiClass.java", new AbstractClassNameCheck());
+        JavaCheckVerifier.verify("src/test/files/AbstractClassNameCheck.java", new AbstractClassNameCheck());
     }
 }
