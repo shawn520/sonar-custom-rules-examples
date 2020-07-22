@@ -10,6 +10,9 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 public class MethodCommentCheckTest {
     @Test
     public void test() {
-        JavaCheckVerifier.verify("src/test/files/ClassCommentCheck.java", new MethodCommentCheck());
+        JavaCheckVerifier.newVerifier()
+            .onFile("src/test/files/ClassCommentCheck.java")
+            .withCheck(new MethodCommentCheck())
+            .verifyIssues();
     }
 }

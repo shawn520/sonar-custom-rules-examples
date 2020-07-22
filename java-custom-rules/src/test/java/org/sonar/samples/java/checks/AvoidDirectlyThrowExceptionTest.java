@@ -11,6 +11,9 @@ public class AvoidDirectlyThrowExceptionTest {
 
     @Test
     public void test() {
-        JavaCheckVerifier.verify("src/test/files/AvoidDirectlyThrowExceptionFile.java", new AvoidDirectlyThrowException());
+        JavaCheckVerifier.newVerifier()
+                .onFile("src/test/files/AvoidDirectlyThrowExceptionFile.java")
+                .withCheck(new AvoidDirectlyThrowException())
+                .verifyIssues();
     }
 }
