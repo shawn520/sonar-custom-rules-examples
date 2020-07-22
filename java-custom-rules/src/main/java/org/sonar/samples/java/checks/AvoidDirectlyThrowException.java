@@ -29,14 +29,6 @@ public class AvoidDirectlyThrowException extends BaseTreeVisitor implements Java
         scan(context.getTree());
     }
 
-    public void visitCatch(CatchTree tree) {
-        VariableTree para = tree.parameter();
-        if("Exception".equals(para.type())) {
-            context.reportIssue(this, tree, "Avoid directly throwing instance of Exception class");
-        }
-
-    }
-
     public void visitMethod(MethodTree tree) {
         ListTree<TypeTree> exceptions =  tree.throwsClauses();
         for(TypeTree exception: exceptions) {

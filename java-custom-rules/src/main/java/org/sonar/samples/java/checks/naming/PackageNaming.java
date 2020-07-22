@@ -9,6 +9,7 @@ import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.*;
 import org.sonar.samples.java.checks.AbstractClassNameCheck;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 /**
@@ -33,13 +34,13 @@ public class PackageNaming extends BaseTreeVisitor implements JavaFileScanner {
     }
 
     public void visitPackage(PackageDeclarationTree tree) {
-        String packageName = tree.packageName().toString();
-        LOGGER.info("packageName = " + packageName );
-//        packageName = "hello 1";
-        boolean match = Pattern.matches(PATTERN, packageName);
-        if(!match) {
-            context.reportIssue(this, tree, "AvoidStartWithDollarAndUnderLineNamingRule");
-        }
+        ExpressionTree pack = tree.packageName();
+        String token = pack.toString();
+
+//        boolean match = Pattern.matches(PATTERN, packageName);
+//        if(!match) {
+//            context.reportIssue(this, tree, "AvoidStartWithDollarAndUnderLineNamingRule");
+//        }
         super.visitPackage(tree);
     }
 
